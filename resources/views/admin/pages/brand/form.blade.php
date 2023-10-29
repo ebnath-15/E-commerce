@@ -1,6 +1,8 @@
 @extends('admin.master')
 
 @section('content')
+<div class="form-row">
+  
 
 <h1>Create new brand</h1>
 

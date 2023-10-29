@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -12,7 +13,8 @@ class CustomerController extends Controller
         return view('admin.pages.customer.list',compact('customers'));
     }
     public function form(){
-        return view('admin.pages.customer.form');
+        $categories = Category::all();
+        return view('admin.pages.customer.form', compact('categories'));
     }
     public function store(Request $request){
         Customer::create([
@@ -22,7 +24,7 @@ class CustomerController extends Controller
             'phone_number'=> $request->phone_number,
             'password'=> $request->password,
             'address'=> $request->address,
-            'product_category'=> $request->product_category,
+            'product_category'=> $request->category,
 
 
         ]);

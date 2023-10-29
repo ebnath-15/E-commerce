@@ -32,7 +32,7 @@
     <input type="text" class="form-control" id="inputText" placeholder="Enter phone no." name="phone_number">
   </div>
   
-  <fieldset class="form-group">
+  <!-- <fieldset class="form-group">
     <div class="row">
       <legend class="col-form-label col-sm-2 pt-0">Product Category</legend>
       <div class="col-sm-10">
@@ -62,7 +62,14 @@
         </div>
       </div>
     </div>
-  </fieldset>
+  </fieldset> -->
+
+  <select class="form-select" name="category" aria-label="Default select example">
+  <option selected>Select Product Category</option>
+  @foreach($categories as $category)
+  <option value="{{$category->name}}">{{$category->name}}<option>
+  @endforeach
+</select>
   <div class="form-group">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" id="gridCheck">

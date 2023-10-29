@@ -38,7 +38,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Payment
                             </a>
-                            <a class="nav-link" href="tables.html">
+                            <a class="nav-link" href="{{route('review.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Reviews
                             </a>
@@ -46,7 +46,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Ratings
                             </a>
-                            <a class="nav-link" href="tables.html">
+                            <a class="nav-link" href="{{route('wish.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Wishlist
                             </a>

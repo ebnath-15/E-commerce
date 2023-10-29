@@ -18,8 +18,8 @@
       <td>{{ $category->name }}</td>
       <td>{{ $category->status }}</td>
       <td>
-    <a class="btn btn-success" href="">Edit</a>
-        <a class="btn btn-danger" href="">Delete</a>
+    <a class="btn btn-success" href="{{route('category.edit')}}">Edit</a>
+        <a class="btn btn-danger" href="{{route('category.delete')}}">Delete</a>
     </td>
     </tr>
     

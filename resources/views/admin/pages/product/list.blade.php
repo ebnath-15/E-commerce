@@ -6,6 +6,9 @@
   <thead>
     <tr>
       <th scope="col">ID</th>
+      <th scope="col">Category_ID</th>
+      <th scope="col">Brand_ID</th>
+
       <th scope="col">Name</th>
       <th scope="col">Quantity</th>
       <th scope="col">Price</th>
@@ -16,6 +19,8 @@
     <tr>
       @foreach($products as $product)
       <th scope="row">{{$product->id}}</th>
+      <td>{{$product->category_id}}</td>
+      <td>{{$product->brand_id}}</td>
       <td>{{$product->name}}</td>
       <td>{{$product->quantity}}</td>
       <td>{{$product->price}}</td>

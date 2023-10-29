@@ -10,6 +10,7 @@
         <title>Document</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="{{url('/css/styles.css')}}" rel="stylesheet" />
+        @notifyCss
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -17,6 +18,8 @@
 
 
     @include('admin.partial.header')
+
+    
     @include('admin.partial.navbar')
         
     
@@ -25,10 +28,12 @@
                 <main>
                     
                     @yield('content')
+                    @include('notify::components.notify')
                 </main>
                
 
              @include('admin.partial.footer')
+             
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -38,5 +43,7 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+        <x-notify::notify />
+        @notifyJs
     </body>
 </html>

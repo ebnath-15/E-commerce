@@ -21,5 +21,12 @@ class CategoryController extends Controller
         return redirect()->back();
         
     }
+    public function edit(){
+        return view('admin.pages.category.create');
+    }
+
+    public function delete(){
+        
+    }
     
 }
