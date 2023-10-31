@@ -5,7 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\orderController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\WishlistController;
@@ -46,7 +46,7 @@ Route::get('/customer/form',[CustomerController::class,'form'])->name('customer.
 Route::post('/customer/store',[CustomerController::class,'store'])->name('customer.store');
 
 //Order
-Route::get('/order/list',[orderController::class,'list'])->name('order.list');
+Route::get('/order/list',[OrderController::class,'list'])->name('order.list');
 Route::get('/order-details',[OrderController::class,'details'])->name('order.details');
 
 //Payment

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
     public function list(){
-        $customers = Customer::all();
+        $customers = Customer::paginate(5);
         return view('admin.pages.customer.list',compact('customers'));
     }
     public function form(){
@@ -28,6 +28,7 @@ class CustomerController extends Controller
 
 
         ]);
-        return redirect()->back();
+        notify()->success('Your data has been stored');
+        return redirect()->route('customer.list');
     }
 }

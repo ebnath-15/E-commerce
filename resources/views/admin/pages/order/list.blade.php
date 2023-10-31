@@ -1,3 +1,3 @@
-@extends('admin.master')
+<!-- @extends('admin.master')
 @section('content')
-@endsection
+@endsection -->

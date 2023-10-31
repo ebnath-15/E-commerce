@@ -10,13 +10,12 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function list(){
-        $products = Product::all();
+        $products = Product::paginate(5);
         return view('admin.pages.product.list', compact('products'));
     }
     public function add(){
        $categories= Category::all();
        $brands= Brand::all();
-       //$categories= Category::find($id);
 
         return view('admin.pages.product.add', compact('categories','brands'));
     }
