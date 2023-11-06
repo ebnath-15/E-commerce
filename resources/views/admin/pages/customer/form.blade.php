@@ -5,12 +5,18 @@
 <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputText">First Name</label>
-      <input type="text" class="form-control" id="inputText" placeholder="Enter first name" name="First_name">
+      <input required type="text" class="form-control" id="inputText" placeholder="Enter first name" name="First_name">
+      @error('First_name')
+      <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
     </div>
     <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputText">Last Name</label>
-      <input type="text" class="form-control" id="inputText" placeholder="Enter last name" name="Last_name">
+      <input required type="text" class="form-control" id="inputText" placeholder="Enter last name" name="Last_name">
+      @error('Last_name')
+    <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
     </div>
     
   <div class="form-row">
@@ -21,6 +27,9 @@
     <div class="form-group col-md-6">
       <label for="inputPassword4">Password</label>
       <input type="password" class="form-control" id="inputPassword4" placeholder="password" name="password">
+      @error('password')
+      <div class="alert alert-danger">{{$message}}</div>
+      @enderror
     </div>
   </div>
   <div class="form-group">
@@ -30,6 +39,9 @@
   <div class="form-group">
     <label for="inputText">Phone Number</label>
     <input type="text" class="form-control" id="inputText" placeholder="Enter phone no." name="phone_number">
+    @error('phone_number')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
   </div>
   
   <!-- <fieldset class="form-group">
@@ -64,12 +76,28 @@
     </div>
   </fieldset> -->
 
-  <select class="form-select" name="category" aria-label="Default select example">
-  <option selected>Select Product Category</option>
+  <select class="form-select" name="category_id" aria-label="Default select example">
+  <option selected>Select a Category:</option>
   @foreach($categories as $category)
-  <option value="{{$category->name}}">{{$category->name}}<option>
+  <option value="{{$category->id}}">{{$category->name}}<option>
   @endforeach
 </select>
+
+<div class="form-group">
+  <label for="inputProductName">Product Name</label>
+  <input type="text" class="form-control" id="" name="product_name">
+</div>
+<div class="form-group">
+  <label for="">Select Brand:</label>
+  <select class="form-select" name="brand_id" aria-label="Default select example">
+  <option>Select Brand</option>
+  @foreach($brands as $brand) 
+  <option value="{{$brand->id}}">{{$brand->name}}</option>
+
+ @endforeach
+  
+</select> 
+</div>
   <div class="form-group">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" id="gridCheck">

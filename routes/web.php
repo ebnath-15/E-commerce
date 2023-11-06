@@ -1,4 +1,6 @@
-0 ` <?php
+<?php
+
+use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
@@ -6,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderDetailsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\WishlistController;
@@ -20,8 +23,14 @@ use App\Http\Controllers\WishlistController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/admin-login',[UserController::class, 'loginForm'])->name('admin.login');
+Route::post('loginForm-post/',[UserController::class,'post'])->name('loginForm.post');
+Route::group(['middleware' => 'auth'], function () {
+
 //Root
-Route::get('/',[HomeController::class, 'home']);
+Route::get('/',[HomeController::class, 'home'])->name('dashboard');
+Route::get('/admin-logout',[UserController::class,'logout'])->name('logout');
 
 //Category
 Route::get('/category',[CategoryController::class,'list'])->name('category.list');
@@ -47,7 +56,13 @@ Route::post('/customer/store',[CustomerController::class,'store'])->name('custom
 
 //Order
 Route::get('/order/list',[OrderController::class,'list'])->name('order.list');
-Route::get('/order-details',[OrderController::class,'details'])->name('order.details');
+Route::get('/order-list/form',[OrderController::class,'form'])->name('order.form');
+Route::post('/order-list/store',[OrderController::class,'store'])->name('order.store');
+
+//OderDetails
+Route::get('/order-details/list',[OrderDetailsController::class,'list'])->name('orderDetails.list');
+Route::get('/order-details/form',[OrderDetailsController::class,'form'])->name('orderDetails.form');
+Route::post('/order-details/store',[OrderDetailsController::class,'list'])->name('orderDetails.store');
 
 //Payment
 Route::get('/payment',[PaymentController::class,'list'])->name('payment.list');
@@ -60,6 +75,7 @@ Route::get('/reviews',[ReviewController::class,'list'])->name('review.list');
 //Wishlist
 Route::get('/wishlist',[WishlistController::class,'list'])->name('wish.list');
 
+});
 
 
 

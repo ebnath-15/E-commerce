@@ -11,7 +11,9 @@
       <th scope="col">Address</th>
       <th scope="col">Phone Number</th>
       <th scope="col">Password</th>
-      <th scope="col">Product Category</th>
+      <th scope="col">product_Category</th>
+      <th scope="col">product_name</th>
+      <th scope="col">product_brand</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -25,9 +27,12 @@
       <td>{{ $customer->address }}</td>
       <td>{{ $customer->phone_number }}</td>
       <td>{{ $customer->password }}</td>
-      <td>{{ $customer->product_category }}</td>
+      <td>{{ $customer->category->name}}</td>
+      <td>{{ $customer->product_name}}</td>
+      <td>{{ $customer->brand->name}}</td>
       <td>
-        <a href="" class="btn btn-primary">Edit</a>
+        <a href="" class="btn btn-primary">view</a>
+        <a href="" class="btn btn-success">Edit</a>
         <a href="" class="btn btn-danger">Delete</a>
       </td>
 

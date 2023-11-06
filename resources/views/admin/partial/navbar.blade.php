@@ -30,7 +30,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Order
                             </a>
-                            <a class="nav-link" href="{{route('order.details')}}">
+                            <a class="nav-link" href="{{route('orderDetails.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Order Details
                             </a>

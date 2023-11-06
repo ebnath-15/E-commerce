@@ -5,11 +5,15 @@
   <div class="form-group">
     <label for="exampleInputText">Add product name</label>
     <input type="text" class="form-control" id="exampleInputText" name="product_name">
+    @error('product_name')
+     
+     <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
   </div>
 
 
   <label for="">Select category:</label>
-<select name="category_id" class="form-select" aria-label="Default select example">
+<select required name="category_id" class="form-select" aria-label="Default select example">
 <option>Select Category</option>
  @foreach($categories as $category)
  <option value="{{$category->id}}">{{$category->name}}</option>
@@ -22,43 +26,7 @@
   @foreach($brands as $brand) 
   <option value="{{$brand->id}}">{{$brand->name}}</option>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  @endforeach
+ @endforeach
   
 </select> 
 </div>
@@ -79,6 +47,9 @@
   <div class="form-group">
     <label for="exampleInputText">Price</label>
     <input type="text" class="form-control" id="exampleInputText" name="product_price">
+    @error('product_price')
+    <div class="alert alert-danger">{{ $message}}</div>
+    @enderror
   </div>
     <label for="exampleInputFile">Image</label>
     <input type="file" class="form-control" id="exampleInputFile" placeholder="File" name="file">

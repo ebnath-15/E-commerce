@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function list(){
-        $categories = Category::all();
+        $categories = Category::paginate(5);
         return view('admin.pages.category.list',compact('categories'));
     }
     public function create(){
