@@ -31,7 +31,7 @@
       <td>{{ $customer->product_name}}</td>
       <td>{{ $customer->brand->name}}</td>
       <td>
-        <a href="" class="btn btn-primary">view</a>
+        <a href="" class="btn btn-primary">view</a>     
         <a href="" class="btn btn-success">Edit</a>
         <a href="" class="btn btn-danger">Delete</a>
       </td>

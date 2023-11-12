@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\WishlistController;
 
 /*
@@ -24,13 +26,25 @@ use App\Http\Controllers\WishlistController;
 |
 */
 
-Route::get('/admin-login',[UserController::class, 'loginForm'])->name('admin.login');
+Route::get('admin-login',[UserController::class, 'loginForm'])->name('admin.login');
 Route::post('loginForm-post/',[UserController::class,'post'])->name('loginForm.post');
 Route::group(['middleware' => 'auth'], function () {
+
 
 //Root
 Route::get('/',[HomeController::class, 'home'])->name('dashboard');
 Route::get('/admin-logout',[UserController::class,'logout'])->name('logout');
+
+//Role
+Route::get('/role/list',[RoleController::class,'list'])->name('role.list');
+Route::get('/role/form',[RoleController::class,'Createform'])->name('role.form');
+Route::post('/role/store',[RoleController::class,'store'])->name('role.store');
+
+//user
+Route::get('/user-list',[UserController::class,'list'])->name('user.list');
+Route::get('/user-form',[UserController::class,'createForm'])->name('user.form');
+Route::post('/user-store',[UserController::class,'store'])->name('user.store');
+
 
 //Category
 Route::get('/category',[CategoryController::class,'list'])->name('category.list');

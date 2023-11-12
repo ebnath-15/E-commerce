@@ -9,11 +9,22 @@
                                 Dashboard
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
-            
+                            </a>
+
+                            <a class="nav-link" href="{{route('role.list')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Role
+                            </a>
+                            <a class="nav-link" href="{{route('user.list')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                User
+                            </a>
+
                             <a class="nav-link" href="{{route('category.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Category
-                            </a>
+
+
                             <a class="nav-link" href="{{route('product.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Product
