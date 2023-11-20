@@ -1,13 +1,13 @@
 @extends('admin.master')
 @section('content')
-<a href="{{route('brand.edit')}}" class="btn btn-primary">Edit brands</a>
+<a href="{{route('brand.create')}}" class="btn btn-primary">Create brands</a>
 <table class="table">
   <thead>
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Brand Name</th>
       <th scope="col">Status</th>
-      <th scope="col">Action</th>
+      <th scope="col">Action</th> 
     </tr>
   </thead>
  
@@ -18,8 +18,8 @@
       <td>{{ $brand->name }}</td>
       <td>{{ $brand->status }}</td>
       <td>
-    <a class="btn btn-success" href="">Edit</a>
-        <a class="btn btn-danger" href="">Delete</a>
+    <a class="btn btn-success" href="{{route('brand.edit',$brand->id)}}">Edit</a>
+        <a class="btn btn-danger" href="{{route('brand.delete',$brand->id)}}">Delete</a>
     </td>
     </tr>
     

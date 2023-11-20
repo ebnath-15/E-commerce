@@ -102,5 +102,54 @@ public function logout(){
     return redirect()->route('admin.login');
 }
 
+//user view,edit,update,delete:
+public function edit($id){
+    $user = User::find($id);
+    $roles= Role::all();
+    return view('admin.pages.User.edit',compact('user','roles'));
 }
+
+public function update(Request $request, $id){
+    $user = User::find($id);
+    $fileName = $user->user_image;
+        if($request->hasFile('user_image'));
+        {
+            $file = $request->file('user_image');
+          
+            $fileName = date('Ymdhis').'.'.$file->getClientOriginalExtension(); 
+           
+            $file->storeAs('/uploads',$fileName);
+        }
+    if($user){
+        $user->update([
+            'name'=> $request->name,
+            'image'=> $fileName,
+            'role'=> $request->name,
+            'email'=>$request->email,
+            'password'=> bcrypt($request->password),
+            'phone'=>$request->phone_number, 
+
+        ]);
+        notify()->success('User updated successfully');
+        return redirect()->back();
+    }
+
+}
+public function delete($id){
+    $user = User::find($id);
+    if($user){
+        $user->delete();
+        notify()->success('User deleted successfully');
+        return redirect()->back();
+    }
+}
+
+
+}
+
+
+
+
+
+
 

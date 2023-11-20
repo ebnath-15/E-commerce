@@ -13,15 +13,9 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->integer('category_id');
-            $table->integer('brand_id');
-            $table->string('first_name', 10);
-            $table->string('last_name', 10);
+            $table->string('name', 10);
             $table->string('email', 50)->unique();
-            $table->string('address',100)->nullable();
             $table->string('password',50);
-            $table->string('product_name',50);
-            $table->string('phone_number', 15)->nullable();
             $table->timestamps();
         });
     }                                                                         

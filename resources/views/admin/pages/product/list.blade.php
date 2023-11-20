@@ -6,12 +6,13 @@
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Category_ID</th>
-      <th scope="col">Brand_ID</th>
+      <th scope="col">Category</th>
+      <th scope="col">Brand</th>
 
       <th scope="col">Name</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Price</th>
+      <th scope="col">Image</th>
+      <th scope="col">price</th>
+      <th scope="col">Stock</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -22,12 +23,16 @@
       <td>{{$product->category->name}}</td>
       <td>{{$product->brand->name}}</td>
       <td>{{$product->name}}</td>
-      <td>{{$product->quantity}}</td>
+      <td>
+        <img width="10%" src="{{url('/uploads'.$product->image)}}" alt="">
+      </td>
+      <td>{{$product->stock}}</td>
       <td>{{$product->price}}</td>
       <td>
-        <a href="" class="btn btn-primary">view</a>
-        <a href="" class="btn btn-success">Edit</a> 
-        <a href="" class="btn btn-danger">Delete</a> 
+        
+        <a href="{{route('product.view', $product->id)}}" class="btn btn-warning">View</a> 
+        <a href="{{route('product.edit',$product->id)}}" class="btn btn-success">Edit</a> 
+        <a href="{{route('product.delete', $product->id)}}" class="btn btn-danger">Delete</a> 
       </td>
     </tr>
     @endforeach 

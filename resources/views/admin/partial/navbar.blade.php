@@ -33,10 +33,6 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Brand
                             </a>
-                            <a class="nav-link" href="{{route('customer.list')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Customer
-                            </a>
                             <a class="nav-link" href="{{route('order.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Order

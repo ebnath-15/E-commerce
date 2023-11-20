@@ -1,10 +1,10 @@
 @extends('admin.master')
 @section('content')
-<form action="{{route('product.store')}}" method="post">
+<form action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
    @csrf
   <div class="form-group">
     <label for="exampleInputText">Add product name</label>
-    <input type="text" class="form-control" id="exampleInputText" name="product_name">
+    <input type="text" class="form-control" id="exampleInputText" name="product_name" >
     @error('product_name')
      
      <div class="alert alert-danger">{{ $message }}</div>
@@ -32,13 +32,10 @@
 </div>
 
   <div class="form-group">
-    <label for="exampleInputNumber">Quantity</label>
-    <input type="number" class="form-control" id="exampleInputNumber" name="product_quantity">
+    <label for="exampleInputNumber">Stock</label>
+    <input type="number" class="form-control" id="exampleInputNumber" name="stock"> 
   </div>
-  <div class="form-group">
-    <label for="exampleInputDate">Date</label>
-    <input type="date" class="form-control" id="exampleInputDate" name="date">
-  </div>
+  
   <div class="form-group">
     <label for="exampleInputTextarea">Description</label>
     <input type="textarea" class="form-control" id="exampleIextarea" name="product_description">
