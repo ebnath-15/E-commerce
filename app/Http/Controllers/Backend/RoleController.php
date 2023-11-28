@@ -23,5 +23,31 @@ class RoleController extends Controller
         ]);
         return redirect()->route('role.list');
     }
+
+    public function edit($id){
+        $role = Role::find($id);
+        return view('admin.pages.Role.edit',compact('role'));
+    }
+    public function update(Request $request, $id){
+        $role = Role::Find($id);
+        if($role){
+            $role->update([
+                'name'=> $request->name
+            
+            ]);
+            notify()->success('Role updated successfully');
+            return redirect()->back();
+        }
+
+    }
+
+    public function delete($id){
+        $role= Role::find($id);
+        if($role){
+            $role->delete();
+            notify()->success('Deleted Successfully');
+            return redirect()->back();
+        }
+    }
     
 }

@@ -80,7 +80,7 @@
                                     </div>
                                 </div>
                                 <div class="userData ml-3">
-                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">Some Name</a></h2>
+                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">{{auth()->user()->name}}</a></h2>
                                     <h6 class="d-block"><a href="javascript:void(0)">1,500</a> Video Uploads</h6>
                                     <h6 class="d-block"><a href="javascript:void(0)">300</a> Blog Posts</h6>
                                 </div>
@@ -109,7 +109,7 @@
                                                 <label style="font-weight:bold;">Full Name</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Jamshaid Kamran
+                                                {{auth()->user()->name}}
                                             </div>
                                         </div>
                                         <hr />
@@ -127,28 +127,28 @@
                                         
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Something</label>
+                                                <label style="font-weight:bold;">Email</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Something
+                                                {{auth()->user()->email}}
                                             </div>
                                         </div>
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Something</label>
+                                                <label style="font-weight:bold;">Address</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Something
+                                                {{auth()->user()->address}}
                                             </div>
                                         </div>
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Something</label>
+                                                <label style="font-weight:bold;">Phone Number</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Something
+                                                {{auth()->user()->phone_number}}
                                             </div>
                                         </div>
                                         <hr />
@@ -208,6 +208,37 @@
                 // }
             });
         });	</script>
+<hr>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">Product</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th> 
+      </tr>
+    </thead>
+   
+    <tbody>
+    @foreach($orders as $order)
+      <tr>
+        <th scope="row">{{ $order->id }}</th>
+        <td>{{ $order->created_at}}</td>
+        <td>{{ $order->product_id}}</td>
+        <td>{{ $order->status }}</td>
+        <td>
+            @if($order->status == 'pending')
+      <a class="btn btn-danger" href="{{route('order.cancel', $order->id)}}">Cancel</a>
+      @endif
+         
+      </td>
+      </tr>
+      
+      @endforeach
+      
+    </tbody>
+  </table>
 </body>
 </html>
 

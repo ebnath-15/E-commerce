@@ -20,8 +20,8 @@
       
       <td>{{ $role->status }}</td>
       <td>
-    <a class="btn btn-success" href="">Edit</a>
-        <a class="btn btn-danger" href="">Delete</a>
+    <a class="btn btn-success" href="{{route('role.edit',$role->id)}}">Edit</a>
+        <a class="btn btn-danger" href="{{route('role.delete', $role->id)}}">Delete</a>
     </td>
     </tr>
     

@@ -24,7 +24,7 @@
       <img style="border-radius: 60px;" width="10%" src="{{url('/uploads/'.$singleUser->image)}}" alt="">
       </td>
       <td>{{ $singleUser->name }}</td>
-      <td>{{ $singleUser->role }}</td>
+      <td>{{ $singleUser->role->name}}</td>
       
       <td>{{ $singleUser->email }}</td>
       

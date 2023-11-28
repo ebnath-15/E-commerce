@@ -30,7 +30,7 @@
       <td>{{$product->price}}</td>
       <td>
         
-        <a href="{{route('product.view', $product->id)}}" class="btn btn-warning">View</a> 
+        {{-- <a href="{{route('product.view', $product->id)}}" class="btn btn-warning">View</a>  --}}
         <a href="{{route('product.edit',$product->id)}}" class="btn btn-success">Edit</a> 
         <a href="{{route('product.delete', $product->id)}}" class="btn btn-danger">Delete</a> 
       </td>

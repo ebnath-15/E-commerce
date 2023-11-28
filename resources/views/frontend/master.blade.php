@@ -4,6 +4,8 @@
 
 <head>
     <meta charset="utf-8">
+    @notifyCss
+
     <title>EShopper - Bootstrap Shop Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
@@ -32,6 +34,7 @@
 
    @include('frontend.partial.header')
    @include('frontend.partial.navbar')
+   @include('notify::components.notify')
    <!-- Section-->
    <section class="py-5">
             <div class="container-fluid">
@@ -63,6 +66,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    @notifyJs
 </body>
 
 </html>

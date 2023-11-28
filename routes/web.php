@@ -7,15 +7,17 @@ use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\BrandController;
-use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\OrderDetailsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\WishlistController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\FrontendHomeController;
 use App\Http\Controllers\Frontend\CustomerController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
+use App\Http\Controllers\Frontend\OrderController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,17 +43,21 @@ Route::get('/single-product/{id}',[FrontendProductController::class,'productView
 //login & logout
 Route::get('/customer/login-form',[CustomerController::class,'loginForm'])->name('customer.login');
 Route::post('/customer/store',[CustomerController::class,'loginStore'])->name('customer.store');
+
+//cart
+Route::get('/cart-view', [CartController::class, 'cartView'])->name('cart.view');
+Route::get('/add-to-cart/{id}',[CartController::class,'AddToCart'])->name('add.cart');
    
 Route::group(['middleware'=>'auth'],function(){
    Route::get('/customer-logout',[CustomerController::class,'logout'])->name('customer.logout');
    Route::get('/profile-view',[CustomerController::class,'profileView'])->name('profile');
 
+//Order
+Route::get('/order/{product_id}',[OrderController::class,'buy'])->name('product.buy');
+Route::get('/order-cancel/{product_id}',[OrderController::class,'cancel'])->name('order.cancel');
+//Route::post('/order-list/store',[OrderController::class,'store'])->name('order.store');
+
 });
-
-
-
-
-
 
 
 
@@ -62,6 +68,7 @@ Route::get('/login',[UserController::class, 'loginForm'])->name('admin.login');
 Route::post('loginForm-post/',[UserController::class,'post'])->name('loginForm.post');
 Route::group(['middleware' => 'auth'], function () {
 
+   Route::group(['middleware'=>'CheckAdmin'],function(){
 
 //Root
 Route::get('/',[HomeController::class, 'home'])->name('dashboard');
@@ -71,6 +78,10 @@ Route::get('/logout',[UserController::class,'logout'])->name('logout');
 Route::get('/role/list',[RoleController::class,'list'])->name('role.list');
 Route::get('/role/form',[RoleController::class,'Createform'])->name('role.form');
 Route::post('/role/store',[RoleController::class,'store'])->name('role.store');
+Route::get('/role-edit/{id}',[RoleController::class,'edit'])->name('role.edit');
+Route::get('/role-delete/{id}',[RoleController::class,'delete'])->name('role.delete');
+Route::put('/role-update/{id}',[RoleController::class,'update'])->name('role.update');
+
 
 //user
 Route::get('/user-list',[UserController::class,'list'])->name('user.list');
@@ -79,7 +90,6 @@ Route::post('/user-store',[UserController::class,'store'])->name('user.store');
 Route::get('/user-edit/{id}',[UserController::class,'edit'])->name('user.edit');
 Route::put('/user-update/{id}',[UserController::class,'update'])->name('user.update');
 Route::get('/user-delete/{id}',[UserController::class,'delete'])->name('user.delete');
-//Route::get('/user-form',[UserController::class,'createForm'])->name('user.form');
 
 
 //Category
@@ -97,7 +107,7 @@ Route::get('/product-add',[ProductController::class,'add'])->name('product.add')
 Route::post('/product-store',[ProductController::class,'store'])->name('product.store');
 Route::get('/product-edit/{id}',[ProductController::class,'edit'])->name('product.edit');
 Route::get('/product-delete/{id}',[ProductController::class,'delete'])->name('product.delete');
-Route::get('/product-view/{id}',[ProductController::class,'edit'])->name('product.view');
+//Route::get('/product-view/{id}',[ProductController::class,'view'])->name('product.view');
 Route::put('/product-update/{id}',[ProductController::class,'delete'])->name('product.update');                                                     
 
 
@@ -111,10 +121,7 @@ Route::get('/brand-delete/{id}',[BrandController::class,'delete'])->name('brand.
 
 
 
-//Order
-Route::get('/order/list',[OrderController::class,'list'])->name('order.list');
-Route::get('/order-list/form',[OrderController::class,'form'])->name('order.form');
-Route::post('/order-list/store',[OrderController::class,'store'])->name('order.store');
+
 
 //OderDetails
 Route::get('/order-details/list',[OrderDetailsController::class,'list'])->name('orderDetails.list');
@@ -134,6 +141,7 @@ Route::get('/wishlist',[WishlistController::class,'list'])->name('wish.list');
 
 });
 
+});
 });
 
 

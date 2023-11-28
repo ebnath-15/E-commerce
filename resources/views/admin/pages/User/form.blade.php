@@ -18,7 +18,7 @@
   
     <div class="form-group">
   <label for="">Select a Role:</label>
-  <select class="form-select" name="role" aria-label="Default select example" class="form-control">
+  <select class="form-select" name="role_id" aria-label="Default select example" class="form-control">
     
   <option value="">Select Role</option>
   @foreach($roles as $role) 

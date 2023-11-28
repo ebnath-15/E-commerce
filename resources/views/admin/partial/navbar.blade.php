@@ -33,7 +33,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Brand
                             </a>
-                            <a class="nav-link" href="{{route('order.list')}}">
+                            <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Order
                             </a>

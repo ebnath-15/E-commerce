@@ -107,6 +107,8 @@ class ProductController extends Controller
             }
             notify()->success('Deleted');
             return redirect()->back();
+         }
+}
         // }
 
     // public function view($id){
@@ -123,5 +125,5 @@ class ProductController extends Controller
 
 
         
-    }
+    
 

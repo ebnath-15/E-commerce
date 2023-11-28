@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
     public function list(){
-        $users = User::all();
+        $users = User::with('role')->get();
        
         return view('admin.pages.User.list', compact('users'));
 
@@ -106,6 +106,7 @@ public function logout(){
 public function edit($id){
     $user = User::find($id);
     $roles= Role::all();
+    
     return view('admin.pages.User.edit',compact('user','roles'));
 }
 
@@ -124,7 +125,7 @@ public function update(Request $request, $id){
         $user->update([
             'name'=> $request->name,
             'image'=> $fileName,
-            'role'=> $request->name,
+            'role_id'=> $request->role_id,
             'email'=>$request->email,
             'password'=> bcrypt($request->password),
             'phone'=>$request->phone_number, 

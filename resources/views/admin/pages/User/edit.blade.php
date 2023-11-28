@@ -23,7 +23,7 @@
     
   <option value="">Select Role</option>
   @foreach($roles as $role) 
-  <option value="{{$role->id}}">{{$role->name}}</option>
+  <option @if($user->role==$role->name) selected @endif value="{{$role->id}}">{{$role->name}}</option>
 @endforeach
 </select> 
 @error('role')
@@ -49,7 +49,7 @@
 
  <div class="form-group">
   <label for="inputText">phone Number</label>
-  <input type="text" placeholder="Enter phone number" id="InputText" name="phone_number" class="form-control" value="{{$user->phone_number}}>
+  <input type="text" placeholder="Enter phone number" id="InputText" name="phone_number" class="form-control" value="{{$user->phone_number}}">
  </div>
 
  <div class="form-group">

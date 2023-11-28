@@ -15,15 +15,16 @@ class BrandController extends Controller
         return view('admin.pages.brand.form');
     }
     public function store(Request $request){
-        $fileNmae = null;
-        if($request->hasFile('image'))
-        $file = $request->file('image');
-        $fileName = date('YMdhis').$file->getClientOriginalExtension();
-        $file->storeAs('/uploads', $fileNmae);
+        
+        // $fileName = null;
+        // if($request->hasFile('image'))
+        // $file = $request->file('image');
+        // $fileName = date('YMdhis').$file->getClientOriginalExtension();
+        // $file->storeAs('/uploads', $fileName);
         Brand::create([
             'name'=>$request->brand_name,
             'description'=>$request->brand_description,
-            'image'=>$fileName,
+            
         ]);
         return redirect()->back();
     }
@@ -34,19 +35,20 @@ class BrandController extends Controller
     }
 
     public function update(Request $request,$id){
-
-        $fileName = null;
-                if($request->hasFile('image')){
-                $file = $request->file('image');
-                $fileName = date('YMdhis').$file->getClientOriginalExtension();
-                $file->storeAs('/uploads', $fileName);
-                }
-
         $singleBrands = Brand::find($id);
+
+        // $fileName = $singleBrands->image;
+        //         if($request->hasFile('image')){
+        //         $file = $request->file('image');
+        //         $fileName = date('YMdhis').$file->getClientOriginalExtension();
+        //         $file->storeAs('/uploads', $fileName);
+        //         }
+
+       
             $singleBrands->update([
                     'name'=>$request->brand_name,
                     'description'=>$request->brand_description,
-                    'image'=>$fileName,
+                    
 
                 ]);
                 notify()->success('Brand updated successfully');

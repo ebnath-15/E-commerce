@@ -47,6 +47,10 @@
                             </div>
                         </div>
                         </a> 
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{route('add.cart', $product->id)}}">Add to cart</a></div>
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{route('product.buy',$product->id)}}">Buy Now</a></div>
+
+
 
                     </div>
                 </div>

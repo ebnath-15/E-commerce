@@ -6,7 +6,7 @@
 
 <h1>Create new brand</h1>
 
-<form action="{{route('brand.store')}}" method="post">
+<form action="{{route('brand.store')}}" method="post" >
     @csrf
   <div class="form-group">
     <label for="">Enter Brand Name</label>

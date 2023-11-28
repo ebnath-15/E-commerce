@@ -21,5 +21,18 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrap();
+
+
+
+
+
+        // if(!app()->runningInConsole()){
+
+        //     if(Schema->hasTable('products')){
+    
+        //         $products = Product::all();
+        //         View::share('products', $products);
+        //     }
+        // }
     }
 }

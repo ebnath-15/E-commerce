@@ -64,9 +64,11 @@
 
                          @auth
                             <a href="{{route('customer.logout')}}" class="nav-item nav-link">Logout</a>
-                        </div>  
+                        </div>
+                        
+                        <a href="{{route('profile')}}" class="nav-item nav-link">{{auth()->user()->name}}</a>  
+                        
                         @endauth
-                        <a href="{{route('profile')}}" class="nav-item nav-link">{{auth()->user()->name}}</a>
                    
                     </div>
                    
