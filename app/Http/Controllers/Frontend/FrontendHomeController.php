@@ -14,4 +14,22 @@ class FrontendHomeController extends Controller
         $products = Product::all();
         return view('frontend.pages.home',compact('categories','products'));
     }
+
+    public function search(Request $request){
+        if($request->search){
+        
+            $products = Product::where('name', 'LIKE'.'%'.$request->search.'%')->get();
+
+        }else{
+            
+            $categories = Category::all();
+        $products= Product::all();
+        
+
+        }
+        return view('frontend.partial.search', compact('products', 'categories'));
+        
+    }
+
+    
 }

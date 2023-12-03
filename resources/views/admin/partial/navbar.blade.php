@@ -21,9 +21,12 @@
                             </a>
 
                             <a class="nav-link" href="{{route('category.list')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Category
-
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i> </div>
+                                Category 
+                               
+                               
+                      
+                           
 
                             <a class="nav-link" href="{{route('product.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>

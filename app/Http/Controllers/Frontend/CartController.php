@@ -9,7 +9,19 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     public function cartView(){
-        return view('frontend.pages.Cart.cart-view');
+        return view('frontend.pages.view-cart');
+    }
+
+    public function remove($ItemId){
+        $items = Product::find($ItemId);
+        if($items){
+            $items->delete();
+
+            notify()->success('Item Removed from cart');
+            return redirect()->back();
+
+        }
+
     }
 
     public function AddToCart($pId){

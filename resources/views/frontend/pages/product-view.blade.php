@@ -255,7 +255,7 @@ img {
 							<span class="color blue"></span>
 						</h5>
 						<div class="action">
-							<button class="add-to-cart btn btn-default" type="button">add to cart</button>
+							<a href="{{route('product.buy', $singleProduct->id)}}" class="add-to-cart btn btn-default" type="button">Buy Now</a>
 							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
 						</div>
 					</div>

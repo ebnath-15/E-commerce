@@ -32,7 +32,7 @@ class ProductController extends Controller
        ]);
        
         if($validate->fails()){
-           return redirect()->back()->withErrors($validate);
+           return redirect()->back()->withErrors($validate); 
         }
         
         $fileName= null;

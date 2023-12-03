@@ -31,6 +31,8 @@ use App\Http\Controllers\Frontend\OrderController;
 */
 //all website route:
 Route::get('/',[FrontendHomeController::class,'home'])->name('frontend.home');
+Route::get('/search',[FrontendHomeController::class,'search'])->name('product.search');
+
 
 //Customer
 //Registration
@@ -39,6 +41,7 @@ Route::post('/registration/store',[CustomerController::class,'store'])->name('re
 Route::get('/customer-logout',[CustomerController::class,'logout'])->name('customer.logout');
 
 //product-view
+
 Route::get('/single-product/{id}',[FrontendProductController::class,'productView'])->name('product.view');
 //login & logout
 Route::get('/customer/login-form',[CustomerController::class,'loginForm'])->name('customer.login');
@@ -47,6 +50,8 @@ Route::post('/customer/store',[CustomerController::class,'loginStore'])->name('c
 //cart
 Route::get('/cart-view', [CartController::class, 'cartView'])->name('cart.view');
 Route::get('/add-to-cart/{id}',[CartController::class,'AddToCart'])->name('add.cart');
+Route::get('/cart-remove/{id}',[CartController::class,'remove'])->name('remove.cart');
+
    
 Route::group(['middleware'=>'auth'],function(){
    Route::get('/customer-logout',[CustomerController::class,'logout'])->name('customer.logout');
