@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Providers;
+use App\Models\Category;
+
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,20 +23,16 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
     public function boot(): void
+
+    
     {
         Paginator::useBootstrap();
 
-
-
-
-
-        // if(!app()->runningInConsole()){
-
-        //     if(Schema->hasTable('products')){
+        if(Schema::hasTable('categories')){
     
-        //         $products = Product::all();
-        //         View::share('products', $products);
-        //     }
-        // }
+                $categories = Category::all();
+                View::share('categories', $categories);
+            }
+        }
     }
-}
+

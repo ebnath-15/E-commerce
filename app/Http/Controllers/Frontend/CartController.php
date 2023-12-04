@@ -13,14 +13,18 @@ class CartController extends Controller
     }
 
     public function remove($ItemId){
-        $items = Product::find($ItemId);
-        if($items){
-            $items->delete();
+       
+
+
+        $cart=session()->get('vcart');
+        unset ($cart[$ItemId]);
+        session()->put('vcart',$cart);
+        // dd($cart);
 
             notify()->success('Item Removed from cart');
             return redirect()->back();
 
-        }
+        
 
     }
 

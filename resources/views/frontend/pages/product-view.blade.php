@@ -1,3 +1,5 @@
+@extends('frontend.master')
+@section('content')
 
 <!DOCTYPE html>
 <html lang="en">
@@ -269,3 +271,6 @@ img {
 		</script>
 </body>
 </html>
+
+
+@endsection

@@ -1,3 +1,5 @@
+@extends('frontend.master');
+@section('content');
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,3 +104,4 @@ items in your cart
         </aside>
     </div>
 </div>  
+@endsection

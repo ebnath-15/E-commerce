@@ -73,7 +73,6 @@
                     </div>
                    
                 </nav>
-                @include('frontend.partial.carousel')
                 
     <!-- Navbar End -->
 
