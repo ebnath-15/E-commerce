@@ -25,6 +25,7 @@ items in your cart
 
 
 <div class="container-fluid">
+    @if(session()->has('vcart') && session()->get('vcart') !=null))
     <div class="row">
         <aside class="col-lg-9">
             <div class="card">
@@ -38,7 +39,12 @@ items in your cart
                                 <th scope="col" class="text-right d-none d-md-block" width="200"></th>
                             </tr>
                         </thead>
-                        @if(session()->has('vcart'))
+                        @php
+
+                        $subtotal = array_sum(array_column(session()->get('vcart'), 'subtotal'));
+                        @endphp
+                        
+                       
                         @foreach(session()->get('vcart') as $item)
                         <tbody>
                             <tr>
@@ -58,13 +64,13 @@ items in your cart
                                     </select> </td>
                                 <td>
                                     <div class="price-wrap"> <var class="price">{{$item['quantity']*$item['price']}}.BDT</var>
-                                         <small class="text-muted"> {{$item['price']}}.BDT.each </small> </div>
+                                         <small class="text-muted"> {{$item['price']}}.BDT each </small> </div>
                                 </td>
                                
                                 <td class="text-right d-none d-md-block"> <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i class="fa fa-heart"></i></a> 
                                     <a href="{{route('remove.cart', $item['id'])}}" class="btn btn-light btn-round" data-abc="true"> Remove</a> </td>
                                     @endforeach
-                                    @endif
+                                    
                                    
                             </tr>
                         </tbody>
@@ -85,23 +91,25 @@ items in your cart
             <div class="card">
                 <div class="card-body">
                     <dl class="dlist-align">
-                        <dt>Total price:</dt>
-                        <dd class="text-right ml-3">$69.97</dd>
+                        <dt>Subtotal:</dt>
+                        <dd class="text-right ml-3">{{$subtotal}}</dd>
                     </dl>
                     <dl class="dlist-align">
-                        <dt>Discount:</dt>
-                        <dd class="text-right text-danger ml-3">- $10.00</dd>
+                        <dt>Shipping:</dt>
+                        <dd class="text-right text-danger ml-3">100.00 BDT</dd>
                     </dl>
                     <dl class="dlist-align">
                         <dt>Total:</dt>
-                        <dd class="text-right text-dark b ml-3"><strong>$59.97</strong></dd>
+                        <dd class="text-right text-dark b ml-3"><strong>{{$subtotal+100.00}}.BDT</strong></dd>
                     </dl>
-                     <a href="" type="button"  class="btn btn-success">Make Purchase</a>
+                     <a href="{{route('checkout')}}" type="button"  class="btn btn-success">Check Out</a><hr>
+                     
                      <a href="" type="button"  class="btn btn-success">Continue Shopping</a>
 
                 </div>
             </div>
         </aside>
     </div>
+    @endif
 </div>  
 @endsection

@@ -70,7 +70,7 @@ class CartController extends Controller
                     'price' => $product->price,
                     'image' => $product->image,
                     'quantity' => 1,
-                    'subtotla' => 1* $product->price,
+                    'subtotal' => 1* $product->price, 
 
                 ];
                 session()->put('vcart',$cart);

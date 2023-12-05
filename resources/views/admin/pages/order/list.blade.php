@@ -1,17 +1,17 @@
 @extends('admin.master')
 @section('content')
-<a href="{{route('order.form')}}" class="btn btn-success">Add Order</a>
+<a href="" class="btn btn-success">Order List</a>
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Order date</th>
-      <th scope="col">Customer ID</th>
-      <th scope="col">Order date</th>
-      <th scope="col">Order Status</th>
-      <th scope="col">Total Amount</th>
-      <th scope="col">Payment Method</th>
-      <th scope="col">Shipping Address</th>
+      <th scope="col">User ID</th>
+      <th scope="col">Receiver Email</th>
+      <th scope="col">Receiver Address</th>
+      <th scope="col">Receiver phone</th>
+      <th scope="col">Total price</th>
+      <th scope="col">Status</th>
+      <th scope="col">payment method</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -19,13 +19,14 @@
     @foreach($orders as $key=>$order)
     <tr>
       <th scope="row">{{ $key+1 }}</th>
-      <td>{{ $order->order_date }}</td>
-      <td>{{ $order->customer_id }}</td>
-      <td>{{ $customer->order_date }}</td>
-      <td>{{ $customer->order_status }}</td>
-      <td>{{ $customer->total_amount }}</td>
-      <td>{{ $customer->payment_method }}</td>
-      <td>{{ $customer->shipping_address}}</td>
+      <td>{{ $order->user_id }}</td>
+      <td>{{ $order->receiver_email }}</td>
+      <td>{{ $order->receiver_address }}</td>
+      <td>{{ $order->receiver_phone }}</td>
+      <td>{{ $order->total_price }}</td>
+      <td>{{ $order->status }}</td>
+      <td>{{ $order->payment_method }}</td>
+     
       <td>
         <a href="" class="btn btn-primary">view</a>
         <a href="" class="btn btn-success">Edit</a>

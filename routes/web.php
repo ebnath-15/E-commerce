@@ -11,6 +11,8 @@ use App\Http\Controllers\Backend\OrderDetailsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\OrderController as BackendOrderController;
+
 use App\Http\Controllers\Backend\WishlistController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\FrontendHomeController;
@@ -58,9 +60,9 @@ Route::group(['middleware'=>'auth'],function(){
    Route::get('/profile-view',[CustomerController::class,'profileView'])->name('profile');
 
 //Order
-Route::get('/order/{product_id}',[OrderController::class,'buy'])->name('product.buy');
+Route::post('/order-place}',[OrderController::class,'orderPlace'])->name('order.place');
 Route::get('/order-cancel/{product_id}',[OrderController::class,'cancel'])->name('order.cancel');
-//Route::post('/order-list/store',[OrderController::class,'store'])->name('order.store');
+Route::get('/checkout',[OrderController::class,'checkout'])->name('checkout');
 
 });
 
@@ -125,13 +127,13 @@ Route::put('/brand-update/{id}',[BrandController::class,'update'])->name('brand.
 Route::get('/brand-delete/{id}',[BrandController::class,'delete'])->name('brand.delete');
 
 
-
+//order
+Route::get('/order-list',[BackendOrderController::class,'list'])->name('order.list');
 
 
 //OderDetails
-Route::get('/order-details/list',[OrderDetailsController::class,'list'])->name('orderDetails.list');
-Route::get('/order-details/form',[OrderDetailsController::class,'form'])->name('orderDetails.form');
-Route::post('/order-details/store',[OrderDetailsController::class,'list'])->name('orderDetails.store');
+
+Route::get('/order-details',[OrderDetailsController::class,'details'])->name('order.details'); 
 
 //Payment
 Route::get('/payment',[PaymentController::class,'list'])->name('payment.list');
