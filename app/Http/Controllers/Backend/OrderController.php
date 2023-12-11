@@ -15,5 +15,14 @@ class OrderController extends Controller
         return view('admin.pages.order.list',compact('orders'));
     }
 
+    public function invoice($id){
+        $order = Order::with('details')->find($id);
+
+        
+    
+        return view('admin.invoice',compact ('order')); 
+
+    }
+
     
 }

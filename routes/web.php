@@ -34,6 +34,8 @@ use App\Http\Controllers\Frontend\OrderController;
 //all website route:
 Route::get('/',[FrontendHomeController::class,'home'])->name('frontend.home');
 Route::get('/search',[FrontendHomeController::class,'search'])->name('product.search');
+Route::get('/contact-us',[FrontendHomeController::class,'contact'])->name('contact');
+
 
 
 //Customer
@@ -48,21 +50,26 @@ Route::get('/single-product/{id}',[FrontendProductController::class,'productView
 //login & logout
 Route::get('/customer/login-form',[CustomerController::class,'loginForm'])->name('customer.login');
 Route::post('/customer/store',[CustomerController::class,'loginStore'])->name('customer.store');
-
-//cart
-Route::get('/cart-view', [CartController::class, 'cartView'])->name('cart.view');
-Route::get('/add-to-cart/{id}',[CartController::class,'AddToCart'])->name('add.cart');
-Route::get('/cart-remove/{id}',[CartController::class,'remove'])->name('remove.cart');
-
    
 Route::group(['middleware'=>'auth'],function(){
    Route::get('/customer-logout',[CustomerController::class,'logout'])->name('customer.logout');
    Route::get('/profile-view',[CustomerController::class,'profileView'])->name('profile');
 
+//cart
+Route::get('/cart-view', [CartController::class, 'cartView'])->name('cart.view');
+Route::get('/add-to-cart/{id}',[CartController::class,'AddToCart'])->name('add.cart');
+Route::get('/cart-remove/{id}',[CartController::class,'remove'])->name('remove.cart');
+Route::get('/quantity-increase/{id}',[CartController::class,'increse'])->name('increase');
+Route::get('/quantity-decrease/{id}',[CartController::class,'decrease'])->name('decrease');
+
+
+
+
 //Order
 Route::post('/order-place}',[OrderController::class,'orderPlace'])->name('order.place');
 Route::get('/order-cancel/{product_id}',[OrderController::class,'cancel'])->name('order.cancel');
 Route::get('/checkout',[OrderController::class,'checkout'])->name('checkout');
+Route::get('/order_details/{id}',[OrderController::class,'order_details'])->name('Order_details');
 
 });
 
@@ -129,6 +136,8 @@ Route::get('/brand-delete/{id}',[BrandController::class,'delete'])->name('brand.
 
 //order
 Route::get('/order-list',[BackendOrderController::class,'list'])->name('order.list');
+Route::get('/invoice/{id}',[BackendOrderController::class,'invoice'])->name('invoice');
+
 
 
 //OderDetails

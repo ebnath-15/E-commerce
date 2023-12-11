@@ -209,12 +209,11 @@
             });
         });	</script>
 <hr>
-<table class="table">
+<table class="table" align="center">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">OrderId</th>
         <th scope="col">Date</th>
-        <th scope="col">Product</th>
         <th scope="col">Status</th>
         <th scope="col">Action</th> 
       </tr>
@@ -225,12 +224,9 @@
       <tr>
         <th scope="row">{{ $order->id }}</th>
         <td>{{ $order->created_at}}</td>
-        <td>{{ $order->product_id}}</td>
         <td>{{ $order->status }}</td>
         <td>
-            @if($order->status == 'pending')
-      <a class="btn btn-danger" href="{{route('order.cancel', $order->id)}}">Cancel</a>
-      @endif
+      <a class="btn btn-danger" href="{{route('Order_details',$order->id)}}">View</a> 
          
       </td>
       </tr>

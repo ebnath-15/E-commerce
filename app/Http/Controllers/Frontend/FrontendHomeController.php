@@ -28,8 +28,12 @@ class FrontendHomeController extends Controller
         
 
         }
-        return view('frontend.partial.search', compact('products'));
+        return view('frontend.partial.search', compact('products')); 
         
+    }
+
+    public function contact(){
+        return view('frontend.contact-us');
     }
 
     

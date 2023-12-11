@@ -74,16 +74,37 @@ class CartController extends Controller
 
                 ];
                 session()->put('vcart',$cart);
-                notify()->success('Product Adeed to Cart');
+                notify()->success('Product Adeed to Cart');   
                 return redirect()->back();
             }
         } 
-        
-
-
-        }
+   }
        
-        
+      //qty decrease
+      public function decrease($PId){
+        $product = Product::find($PId);
+        $cart = session()->get('vcart');
+        if(array_key_exists($PId, $cart)){
+            $cart[$PId]['quantity']-=1;
+            $cart[$PId]['subtotal']= $cart[$PId]['quantity']* $cart[$PId]['price']; 
+            session()->put('vcart');
+            return redirect()->back();
+        }
+
+      }  
+
+      //qty increase
+      public function increase($PId){
+        $product = Product::find($PId);
+        $cart = session()->get('vcart');
+        if(array_key_exists($PId, $cart)){
+            $cart[$PId]['quantity']+=1;
+            $cart[$PId]['subtotal']= $cart[$PId]['quantity']* $cart[$PId]['price']; 
+            session()->put('vcart');
+            return redirect()->back();
+        }
+
+      }  
         
 
     }

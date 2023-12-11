@@ -28,8 +28,7 @@
       <td>{{ $order->payment_method }}</td>
      
       <td>
-        <a href="" class="btn btn-primary">view</a>
-        <a href="" class="btn btn-success">Edit</a>
+        <a href="{{route('invoice',$order->id)}}" class="btn btn-primary">view</a>
         <a href="" class="btn btn-danger">Delete</a>
       </td>
 

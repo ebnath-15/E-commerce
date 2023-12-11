@@ -66,5 +66,13 @@ class orderController extends Controller
             return redirect()->back();
         }
     }
-    
+
+    public function order_details($id){
+        $order = Order::with('details')->find($id);
+
+        return view('frontend.pages.order-details',compact('order'));
+    }
+
+
+
 }

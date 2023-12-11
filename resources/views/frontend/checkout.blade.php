@@ -180,18 +180,17 @@ span.price {
       </form>
     </div>
   </div>
-  {{-- <div class="col-25">
+  <div class="col-25">
     <div class="container">
-      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>{{count(session()->get('vcart'))}}</b></span></h4>
+      @foreach(session()->get('vcart') as $item)
+      <p><a href="#">{{$item['name']}}</a> <span class="price">{{$item['price']}}</span></p>
+      @endforeach
       <hr>
-      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+      <p>Total <span class="price" style="color:black"><b>{{array_sum(array_column(session()->get('vcart'),'subtotal'))}}</b></span></p>
     </div>
   </div>
-</div> --}}
+</div>
 
 </body>
 </html>
