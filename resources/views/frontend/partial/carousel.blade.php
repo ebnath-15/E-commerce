@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="carousel-item" style="height: 410px;">
-            <img class="img-fluid" src="img/carousel-2.jpg" alt="Image">
+            <img class="img-fluid" src="" alt="Image">
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                 <div class="p-3" style="max-width: 700px;">
                     <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
@@ -26,9 +26,9 @@
             <span class="carousel-control-prev-icon mb-n2"></span>
         </div>
     </a>
-    <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+    <a class="carousel-control-next" href="#header-carousel" data-slide="next"> 
         <div class="btn btn-dark" style="width: 45px; height: 45px;">
-            <span class="carousel-control-next-icon mb-n2"></span>
+            <span class="carousel-control-next-icon mb-n2"></span>  
         </div>
     </a>
 </div>

@@ -28,7 +28,7 @@ class UserController extends Controller
 
 
         //   dd($request->all());
-        $validate = Validator::make($request->all(),[
+        $validate = Validator::make($request->all(),[ 
             'name' => 'required',
             'role' => 'required',
             'email'=> 'required|email',
@@ -59,7 +59,7 @@ class UserController extends Controller
             'role'=> $request->name,
             'email'=>$request->email,
             'password'=> bcrypt($request->password),
-            'phone'=>$request->phone_number, 
+            'phone'=>$request->phone_number,    
             
             
         ]);
@@ -74,9 +74,9 @@ class UserController extends Controller
     public function post(Request $request){
 
         
-        $validate = Validator::make($request->all(),[
+        $validate = Validator::make($request->all(),[ 
             'email'=>'required|email',
-            'password'=>'required|min:6',
+            'password'=>'required|min:6', 
 
         ]);
         if($validate->fails()){

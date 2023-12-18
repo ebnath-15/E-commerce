@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Settings;
 use Illuminate\Http\Request;
 
 class FrontendHomeController extends Controller
@@ -33,8 +34,15 @@ class FrontendHomeController extends Controller
     }
 
     public function contact(){
-        return view('frontend.contact-us');
+        return view('frontend.contact-us');   
     }
+
+    public function settings(){
+        $settings = Settings::all(); 
+        return view('frontend.pages.home', compact('settings'));
+    }
+
+    
 
     
 }

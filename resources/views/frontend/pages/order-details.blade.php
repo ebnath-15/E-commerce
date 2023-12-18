@@ -53,14 +53,14 @@
     			<div class="col-xs-6">
     				<address>
     				<strong>Billed To:</strong><br>
-    					{{$order->user_id}}<br>
+    					{{$order->user->name}}<br>
     					{{$order->receiver_address}}<br>
     				</address>
     			</div>
     			<div class="col-xs-6 text-right">
     				<address>
         			<strong>Shipped To:</strong><br>
-                    {{$order->user_id}}<br>
+                    {{$order->user->name}}<br>
                     {{$order->receiver_address}}<br>
     				</address>
     			</div>
@@ -95,7 +95,7 @@
                             <thead>
                               <tr>
                                 <th class="text-center"  scope="col">Id</th>
-                                <th class="text-center"scope="col">ProductId</th>
+                                <th class="text-center"scope="col">Product Name</th>
                                 <th class="text-center"scope="col">Quantity</th>
                                 <th class="text-end"scope="col">Price</th>
                               </tr>
@@ -103,6 +103,7 @@
                             <tbody>
 								@php 
 									$subT = 0; 
+								
 								@endphp
                                 @foreach($order->details as $item)
 								@php 
@@ -110,7 +111,7 @@
 								@endphp
     							<tr class="border">
     								<td class="text-center">{{$item->id}}</td>
-    								<td class="text-center">{{$item->product_id}}</td>
+    								<td class="text-center">{{$item->product->name}}</td>
     								<td class="text-center">{{$item->quantity}}</td> 
     								<td class="text-end">{{$item->subtotal}}</td>
     							</tr>
@@ -129,10 +130,13 @@
     								<td class="no-line text-right">100 .BDT</td> 
     							</tr>
     							<tr>
+									@php 
+									$total = ($subT + 100)
+									@endphp
     								<td class="no-line"></td>
     								<td class="no-line"></td>
     								<td class="no-line text-center"><strong>Total</strong></td>
-    								<td class="no-line text-right">{{$item->total}}</td>
+    								<td class="no-line text-right">{{$total}}.BDT</td>
     							</tr>
     						</tbody>
                             

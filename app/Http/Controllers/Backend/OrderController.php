@@ -20,7 +20,7 @@ class OrderController extends Controller
 
         
     
-        return view('admin.invoice',compact ('order')); 
+        return view('admin.invoice',compact ('order'));  
 
     }
 

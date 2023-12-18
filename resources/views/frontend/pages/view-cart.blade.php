@@ -45,11 +45,12 @@ items in your cart
                                     </figure>
                                 </td>
                                 <td>
-                                    <a href="{{route('decrease', $item['id'])}}">-</a><a href="{{route('increase', $item['id'])}}" class="border">{{count(session()->get('vcart'))}}</a><a href="#">+</a>
+                                    <a href="{{route('decrease', $item['id'])}}">-</a>{{$item['quantity']}}</a>
+                                    <a href="{{route('add.cart',$item['id'])}}">+</a>
                                 </td>
                                 <td>
                                     <div class="price-wrap"> <var class="price">{{$item['quantity']*$item['price']}}.BDT</var>
-                                         <small class="text-muted"> {{$item['price']}}.BDT each </small> </div>
+                                         <small class="text-muted"> {{$item['price']}}.BDT each </small> </div> 
                                 </td>
                                
                                 <td class="text-right d-none d-md-block"> <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i class="fa fa-heart"></i></a> 

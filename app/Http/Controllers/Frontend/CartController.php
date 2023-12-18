@@ -33,7 +33,7 @@ class CartController extends Controller
         $product = Product::find($pId);
 
         session()->forget('vcart');
-// dd(empty($cart));
+            // dd(empty($cart));
         if(empty($cart)){
             //add to cart
 
@@ -79,33 +79,20 @@ class CartController extends Controller
             }
         } 
    }
-       
-      //qty decrease
-      public function decrease($PId){
-        $product = Product::find($PId);
-        $cart = session()->get('vcart');
-        if(array_key_exists($PId, $cart)){
-            $cart[$PId]['quantity']-=1;
-            $cart[$PId]['subtotal']= $cart[$PId]['quantity']* $cart[$PId]['price']; 
-            session()->put('vcart');
-            return redirect()->back();
-        }
 
-      }  
-
-      //qty increase
-      public function increase($PId){
-        $product = Product::find($PId);
-        $cart = session()->get('vcart');
-        if(array_key_exists($PId, $cart)){
-            $cart[$PId]['quantity']+=1;
-            $cart[$PId]['subtotal']= $cart[$PId]['quantity']* $cart[$PId]['price']; 
-            session()->put('vcart');
-            return redirect()->back();
-        }
-
-      }  
+   public function decrease($pId){
+    // dd($PId);
+    $cart=session()->get('vcart');
+    if(array_key_exists($pId, $cart)){
+        //quantity update
+        $cart[$pId]['quantity']-=1;
+        $cart[$pId]['subtotal']= $cart[$pId]['quantity']* $cart[$pId]['price'];
+        session()->put('vcart', $cart);
         
-
+        notify()->success('product quantity update');
+        return redirect()->back();
     }
 
+   }
+
+}

@@ -19,6 +19,7 @@ use App\Http\Controllers\Frontend\FrontendHomeController;
 use App\Http\Controllers\Frontend\CustomerController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
 use App\Http\Controllers\Frontend\OrderController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SslCommerzPaymentController;
 
 /*
@@ -59,7 +60,6 @@ Route::group(['middleware'=>'auth'],function(){
 Route::get('/cart-view', [CartController::class, 'cartView'])->name('cart.view');
 Route::get('/add-to-cart/{id}',[CartController::class,'AddToCart'])->name('add.cart');
 Route::get('/cart-remove/{id}',[CartController::class,'remove'])->name('remove.cart');
-Route::get('/quantity-increase/{id}',[CartController::class,'increse'])->name('increase');
 Route::get('/quantity-decrease/{id}',[CartController::class,'decrease'])->name('decrease');
 
 
@@ -157,10 +157,16 @@ Route::get('/invoice/{id}',[BackendOrderController::class,'invoice'])->name('inv
 
 Route::get('/order-details',[OrderDetailsController::class,'details'])->name('order.details'); 
 
-//Payment
-Route::get('/payment',[PaymentController::class,'list'])->name('payment.list');
-Route::get('/payment-create',[PaymentController::class,'create'])->name('payment.create');
-Route::post('/payment-store',[PaymentController::class,'store'])->name('payment.store');
+//Settings
+Route::get('/settings',[SettingsController::class,'settings'])->name('business.settings');
+Route::get('/settings-create',[SettingsController::class,'create'])->name('settings.create');
+Route::post('/settings-save',[SettingsController::class,'save'])->name('settings.save');  
+Route::get('/settings-edit',[SettingsController::class,'edit'])->name('settings.edit');
+Route::post('/settings-reset',[SettingsController::class,'reset'])->name('settings.reset');
+
+
+
+
 
 //Review
 Route::get('/reviews',[ReviewController::class,'list'])->name('review.list');

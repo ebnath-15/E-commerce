@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('receiver_address',100);
             $table->string('receiver_email',100)->nullable();
             $table->string('receiver_mobile',100);
-            $table->text('order_note')->nullable;
-            
+            $table->text('order_note')->nullable; 
+            $table->string('transaction_id')->unique();
+            $table->string('payment_status')->nullable();
             $table->timestamps();
         });
     }

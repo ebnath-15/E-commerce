@@ -33,6 +33,7 @@ class orderController extends Controller
                 'receiver_mobile' => $request->phone,
                 'receiver_email' => $request->email,
                 'order_note' => $request->note,
+                'transaction_id' => date('YmdHis')
 
 
             ]);
@@ -51,6 +52,8 @@ class orderController extends Controller
            
             
             session()->forget('vcart');
+
+            //payment
             $this->payOnline($order);
             
             notify()->success('Order Placed');
@@ -58,16 +61,16 @@ class orderController extends Controller
 
 }
  public function payOnline($order){
-    //dd($order);
+    
     $post_data = array();
         $post_data['total_amount'] = (int)$order->total_price; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
-        $post_data['tran_id'] = uniqid(); // tran_id must be unique
+        $post_data['tran_id'] =  $order->transaction_id;// tran_id must be unique
 
         # CUSTOMER INFORMATION
         $post_data['cus_name'] = $order->receiver_name;
         $post_data['cus_email'] = $order->receiver_name;
-        $post_data['cus_add1'] = $order->receiver_name; 
+        $post_data['cus_add1'] = $order->receiver_address; 
         $post_data['cus_add2'] = "";
         $post_data['cus_city'] = "";
         $post_data['cus_state'] = "";
@@ -111,9 +114,6 @@ class orderController extends Controller
 
  }
 
-
-
-
      public function cancel($product_id){
         $orders = Order::find($product_id);
         if($orders){
@@ -127,7 +127,8 @@ class orderController extends Controller
     }
 
     public function order_details($id){
-        $order = Order::with('details')->find($id);
+        $order = Order::with('details', 'user')->find($id); 
+        // dd($order);
 
         return view('frontend.pages.order-details',compact('order'));
     }

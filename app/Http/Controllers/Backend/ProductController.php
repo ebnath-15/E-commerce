@@ -54,7 +54,7 @@ class ProductController extends Controller
             'decription'=>$request->product_description,
             'image'=> $fileName,
             'price'=>$request->product_price,
-            'stock'=> $request->stock, 
+            'stock'=> $request->stock,  
         ]); 
 
         notify()->success('Your data has been stored!');
