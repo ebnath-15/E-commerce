@@ -57,7 +57,7 @@ class orderController extends Controller
             $this->payOnline($order);
             
             notify()->success('Order Placed');
-            return redirect()->route('frontend.home');
+            return redirect()->route('frontend.home'); 
 
 }
  public function payOnline($order){
@@ -69,7 +69,7 @@ class orderController extends Controller
 
         # CUSTOMER INFORMATION
         $post_data['cus_name'] = $order->receiver_name;
-        $post_data['cus_email'] = $order->receiver_name;
+        $post_data['cus_email'] = $order->receiver_email;
         $post_data['cus_add1'] = $order->receiver_address; 
         $post_data['cus_add2'] = "";
         $post_data['cus_city'] = "";

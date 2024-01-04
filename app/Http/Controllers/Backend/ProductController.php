@@ -24,7 +24,7 @@ class ProductController extends Controller
     }
     public function store(Request $request ){
 
-
+// dd($request->all());
         $validate = validator::make(request()->all(),
         [
            'product_name'=>'required',
@@ -37,29 +37,32 @@ class ProductController extends Controller
         
         $fileName= null;
 
-        if($request->hasFile('file')){
-            $file = $request->file('file');
-            $fileName = date('Ymdhis').$file->getClientOriginalExtension();//gen name
-          
-            $file->storeAs('/uploads',$fileName);
-        }
+        if($request->hasFile('files') ){
 
-        
-       
-        
+            foreach ($request->file('files') as $file){
+
+                $singleFileName= date('Ymdhis').'.'.$file->getClientOriginalExtension();//gen name
+                $fileName[]=$singleFileName;
+            
+                $file->storeAs('/uploads',$singleFileName); 
+
+                
+             }
+
         Product::create([
             'category_id'=>$request->category_id,
             'brand_id'=>$request->brand_id,
             'name'=>$request->product_name,
             'decription'=>$request->product_description,
-            'image'=> $fileName,
-            'price'=>$request->product_price,
-            'stock'=> $request->stock,  
+            'image'=> json_encode($fileName),
+            'price'=>$request->product_price, 
+            'stock'=> $request->stock,   
         ]); 
 
         notify()->success('Your data has been stored!');
         return redirect()->route('product.list');
     }
+}
 
     public function edit($id){
         $singleProduct = product::find($id);
@@ -76,8 +79,8 @@ class ProductController extends Controller
          
          $fileName= $singleProduct->image;
  
-         if($request->hasFile('file')){
-             $file = $request->file('file');
+         if($request->hasFile('files')){
+             foreach($request->file('files') as $file){
              $fileName = date('Ymdhis').$file->getClientOriginalExtension();//gen name
            
              $file->storeAs('/uploads',$fileName);
@@ -99,6 +102,7 @@ class ProductController extends Controller
             
          }
         }
+    }
 
          public function delete($id){
             $singleProduct = Product::find($id);

@@ -42,11 +42,13 @@
     </script>
 </head>
 <body>
-    <div class="container">
-    <div class="row">
+	<button class="btn btn-success" onclick="printContent('printDiv')">Print</button>
+    <div class="container" id="printDiv">
+    <div class="row" >
         <div class="col-xs-12">
     		<div class="invoice-title">
-    			<h2>Invoice</h2><h3 class="pull-right">{{$order->id}}</h3>
+			<div id="">
+    			<h2>Invoice</h2><h3 class="pull-right">{{$order->id}}</h3> 
     		</div>
     		<hr>
     		<div class="row">
@@ -150,5 +152,20 @@
 		</script>
 </body>
 </html>
+</div>
 
 @endsection
+@push('yourJsCode')
+  
+<script type="text/javascript">
+      
+      function printContent(el){
+          var restorepage = $('body').html();
+          var printcontent = $('#' + el).clone();
+          $('body').empty().html(printcontent);
+          window.print();
+          $('body').html(restorepage);  
+      }
+  
+  </script> 
+@endpush

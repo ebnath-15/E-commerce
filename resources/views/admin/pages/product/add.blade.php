@@ -49,7 +49,7 @@
     @enderror
   </div>
     <label for="exampleInputFile">Image</label>
-    <input type="file" class="form-control" id="exampleInputFile" placeholder="File" name="file">
+    <input type="file" class="form-control" id="exampleInputFile" placeholder="File" name="files[]" multiple>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

@@ -20,7 +20,8 @@
       <td>{{ $setting->location }}</td>
       <td>{{ $setting->contact_details }}</td>
       <td> <img width='10%' src="{{url('/uploads/'.$setting->logo)}}" alt=""></td>
-      <td> <img width='10%' src="{{url('/uploads/'.$setting->slider)}}" alt=""></td>
+      {{-- <td> <img width='10%' src="{{url('/uploads/'.$setting->slider)}}" alt=""></td> --}}
+      {{$settings->logo}}
       <td>
     <a class="btn btn-success" href="{{route('settings.edit')}}">Edit</a>  
     </td>

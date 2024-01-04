@@ -34,18 +34,19 @@ items in your cart
                         
                        
                         @foreach(session()->get('vcart') as $item)
+                        {{-- @dd(json_decode($item['image'])[0]) --}}
                         <tbody>
                             <tr>
                                 <td>
                                     <figure class="itemside align-items-center">
-                                        <div class="aside"><img  width="20%" src="{{url('/uploads',$item['image'])}}" class="img-sm"></div>
+                                        <div class="aside"><img  width="20%" src="{{url('/uploads/'.json_decode($item['image'])[0])}}" class="img-sm"></div>
                                         <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">{{$item['name']}}</a>
-                                            <p class="text-muted small">Size<br>Brand</p>
+                                            <p class="text-muted small">Size<br>Brand</p> 
                                         </figcaption>
                                     </figure>
                                 </td>
                                 <td>
-                                    <a href="{{route('decrease', $item['id'])}}">-</a>{{$item['quantity']}}</a>
+                                    <a href="{{route('decrease', $item['id'])}}">-</a>{{$item['quantity']}}</a> 
                                     <a href="{{route('add.cart',$item['id'])}}">+</a>
                                 </td>
                                 <td>

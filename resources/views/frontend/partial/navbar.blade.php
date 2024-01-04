@@ -10,23 +10,9 @@
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                         <div class="nav-item dropdown">
                             @foreach($categories as $category)
-                            <a href="#" class="nav-link" data-toggle="dropdown">{{$category->name}}<i class="fa fa-angle-down float-right mt-1"></i></a>
+                            <a href="{{route('ProductUnderCategory',$category->id)}}" class="nav-link">{{$category->name}}<i class="fa fa-angle-down float-right mt-1"></i></a>
                              @endforeach
-                            <!-- <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                                <a href="" class="dropdown-item">Men's Dresses</a>
-                                <a href="" class="dropdown-item">Women's Dresses</a>
-                                <a href="" class="dropdown-item">Baby's Dresses</a>
-                            </div> -->
                         </div>
-                        <!-- <a href="" class="nav-item nav-link">Shirts</a>
-                        <a href="" class="nav-item nav-link">Jeans</a>
-                        <a href="" class="nav-item nav-link">Swimwear</a>
-                        <a href="" class="nav-item nav-link">Sleepwear</a>
-                        <a href="" class="nav-item nav-link">Sportswear</a>
-                        <a href="" class="nav-item nav-link">Jumpsuits</a>
-                        <a href="" class="nav-item nav-link">Blazers</a>
-                        <a href="" class="nav-item nav-link">Jackets</a>
-                        <a href="" class="nav-item nav-link">Shoes</a> -->
                     </div>
                 </nav>
             </div>

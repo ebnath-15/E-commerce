@@ -213,23 +213,25 @@ img {
 					<div class="preview col-md-6">
 						
 						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="{{url('/uploads/'.$singleProduct->image)}}" /></div>
-                                <div class="tab-pane" id="pic-2"><img src="{{url('/uploads/'.$singleProduct->image)}}" /></div>
-                            <div class="tab-pane" id="pic-3"><img src="{{url('/uploads/'.$singleProduct->image)}}" /></div>
-                            <div class="tab-pane" id="pic-4"><img src="{{url('/uploads/'.$singleProduct->image)}}" /></div>
-                            <div class="tab-pane" id="pic-5"><img src="{{url('/uploads/'.$singleProduct->image)}}" /></div>
+						  <div class="tab-pane active" id="pic-1"><img src="{{url('/uploads/'.json_decode($singleProduct->image)[0])}}" /></div>
+
 						</div>
-						<ul class="preview-thumbnail nav nav-tabs">
-						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{{url('/uploads/'.$singleProduct->image)}}"/></a></li>
-						  <li><a data-target="#pic-2" data-toggle="tab"><img src="{{url('/uploads/'.$singleProduct->image)}}" /></a></li>
-						  <li><a data-target="#pic-3" data-toggle="tab"><img src="{{url('/uploads/'.$singleProduct->image)}}" /></a></li>
-						  <li><a data-target="#pic-4" data-toggle="tab"><img src="{{url('/uploads/'.$singleProduct->image)}}" /></a></li>
-						  <li><a data-target="#pic-5" data-toggle="tab"><img src="{{url('/uploads/'.$singleProduct->image)}}" /></a></li>
-						</ul>
+						<ul class="preview-thumbnail nav nav-tabs"> 
+              @php
+              $images = json_decode($singleProduct->image);
+              
+              @endphp
+             
+              @foreach($images as $image) 
+             
+						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{{url('/uploads/'.$image)}}"/></a></li>
+						  @endforeach
+              
+						</ul>  
 						
 					</div>
 					<div class="details col-md-6">
-						<h3 class="product-title">{{$singleProduct->name}}</h3>
+						<h3 class="product-title">{{$singleProduct->name}}</h3> 
 						<div class="rating">
 							<div class="stars">
 								<span class="fa fa-star checked"></span>
@@ -258,7 +260,7 @@ img {
 						</h5>
 						<div class="action">
 							{{-- <a href="{{route('product.buy', $singleProduct->id)}}" class="add-to-cart btn btn-default" type="button">Buy Now</a> --}}
-							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+							<a href="{{route('wish',$singleProduct->id)}}" class="like btn btn-default" type="button"><span class="fa fa-heart"></span></a>
 						</div>
 					</div>
 				</div>
@@ -267,10 +269,7 @@ img {
 	</div>
   </body>
 </html>
-	<script type="text/javascript">
-		</script>
-</body>
-</html>
-
+@include('frontend.partial.reviewRatings')
 
 @endsection
+

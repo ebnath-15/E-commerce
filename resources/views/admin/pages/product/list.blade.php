@@ -19,12 +19,16 @@
   <tbody>
     <tr>
       @foreach($products as $product)
+     
       <th scope="row">{{$product->id}}</th>
       <td>{{$product->category->name}}</td>
       <td>{{$product->brand->name}}</td>
       <td>{{$product->name}}</td>
       <td>
-        <img width="10%" src="{{url('/uploads/'.$product->image)}}" alt="">
+        @foreach(json_decode($product->image) as $file)
+       
+        <img width="10%" src="{{url('/uploads/'.$file)}}" alt="">  
+        @endforeach
       </td>
       <td>{{$product->stock}}</td>
       <td>{{$product->price}}</td>

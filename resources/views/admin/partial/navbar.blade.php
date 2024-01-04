@@ -44,10 +44,23 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Order Details
                     </a>
+                    <a class="nav-link" href="{{route('wish.list')}}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        WishList   
+                    </a>
 
                     <a class="nav-link" href="{{route('business.settings')}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-settings"></i></div>
                         Settings
+                    </a>
+
+                    <a class="nav-link" href="{{route('slider')}}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-settings"></i></div>
+                        slider
+                    </a>
+                    <a class="nav-link" href="{{route('review')}}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-settings"></i></div>
+                        Review-ratings
                     </a>
                             
                         </div>

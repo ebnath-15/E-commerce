@@ -51,15 +51,15 @@
                 </form>
             </div>
             <div class="col-lg-3 col-6 text-right">
-                <a href="" class="btn border">
+                <a href="{{route('mywish')}}" class="btn border">   
                     <i class="fas fa-heart text-primary"></i>
-                    <span class="badge">0</span>
+                    <span class="badge">{{auth()->check()? $wishlists->where('user_id',auth()->user()->id)->count(): 0 }}</span>
                 </a>
                 <a href="{{route('cart.view')}}" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge">
                         @if(session()->has('vcart'))
-                        {{count(session()->get('vcart'))}}
+                        {{count(session()->get('vcart'))}} 
                         @else
                         0
                         @endif

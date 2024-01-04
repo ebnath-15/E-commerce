@@ -25,20 +25,12 @@ class SettingsController extends Controller
             $file->storeAs('/uploads',$fileName); 
         }
 
-        $fileName = null;
-        if($request->hasFile('slider')){
-            $file = $request->slider;
-            $fileName = date('YMdhis').$file->getClientOriginalExtension();
-            $file->storeAs('/uploads',$fileName);
-        }
 
         Settings::create([
             'company_name' => $request->company_name,
             'location' => $request->location,
             'contact_details' => $request->contact_details,
             'logo'=> $fileName,
-            'slider'=> $fileName,   
-
         ]);
         return redirect()->back();
         
@@ -57,21 +49,13 @@ class SettingsController extends Controller
             $file->storeAs('/uploads',$fileName); 
         }
 
-         $fileName = $setting->slider;
-        ;
-        if($request->hasFile('slider')){
-            $file = $request->slider;
-            $fileName = date('YMdhis').$file->getClientOriginalExtension();
-            $file->storeAs('/uploads',$fileName);
-        }
        
        if($setting){
         $setting->update([
             'company_name' => $request->company_name,
             'location' => $request->location,
-            'contact_details' => $request->contact_details,
+            'contact_details' => $request->contact_details, 
             'logo'=> $fileName,
-            'slider'=> $fileName,   
         ]); 
        } 
     }
