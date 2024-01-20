@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function productView($productId){
-        $singleProduct = Product::find($productId);
-        // dd($singleProduct);
-        return view('frontend.pages.product-view',compact('singleProduct'));
+        $singleProduct = Product::with(['review','brand'])->find($productId); 
+      
+         //dd($singleProduct);
+        return view('frontend.pages.product-view',compact('singleProduct')); 
     }
 }

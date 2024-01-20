@@ -19,6 +19,7 @@ use App\Http\Controllers\Frontend\FrontendHomeController;
 use App\Http\Controllers\Frontend\CustomerController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
 use App\Http\Controllers\Frontend\OrderController;
+use App\Http\Controllers\Frontend\ReviewController as FrontendReviewController;
 use App\Http\Controllers\Frontend\WishlistController as FrontendWishlistController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SslCommerzPaymentController;
@@ -95,6 +96,13 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
 
 });
+
+//Review-ratings
+Route::get('/add-review/{order_id}/{p_id}',[FrontendReviewController::class, 'addReview'])->name('add.review'); 
+Route::post('/post-review/{order_id}/{p_id}',[FrontendReviewController::class, 'postReview'])->name('post.review'); 
+
+
+
 
 
 

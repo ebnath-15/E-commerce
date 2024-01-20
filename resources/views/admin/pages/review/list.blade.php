@@ -19,8 +19,8 @@
     <tr>
       <th scope="row">{{ $key+1 }}</th>
       <td>{{ $review->order_id }}</td>
-      <td>{{ $review->product_id }}</td>
-      <td>{{ $review->customer_id }}</td>
+      <td>{{ $review->product->name }}</td>
+      <td>{{ $review->user->name }}</td>
       <td>{{ $review->image }}</td>
       <td>{{ $review->review }}</td>  
       <td>{{ $review->ratings }}</td>  

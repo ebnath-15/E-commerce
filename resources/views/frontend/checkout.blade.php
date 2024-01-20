@@ -187,7 +187,7 @@ span.price {
       <p><a href="#">{{$item['name']}}</a> <span class="price">{{$item['price']}}</span></p>
       @endforeach
       <hr>
-      <p>Total <span class="price" style="color:black"><b>{{array_sum(array_column(session()->get('vcart'),'subtotal'))}}</b></span></p>
+      <p>Total <span class="price" style="color:rgb(0, 0, 0)"><b>{{array_sum(array_column(session()->get('vcart'),'subtotal'))}}</b></span></p>
     </div>
   </div>
 </div>

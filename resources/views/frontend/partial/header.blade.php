@@ -52,7 +52,7 @@
             </div>
             <div class="col-lg-3 col-6 text-right">
                 <a href="{{route('mywish')}}" class="btn border">   
-                    <i class="fas fa-heart text-primary"></i>
+                    <i class="fa fa-heart text-primary"></i>
                     <span class="badge">{{auth()->check()? $wishlists->where('user_id',auth()->user()->id)->count(): 0 }}</span>
                 </a>
                 <a href="{{route('cart.view')}}" class="btn border">

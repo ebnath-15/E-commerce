@@ -6,12 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        body {
-	background-image: linear-gradient(#4A148C, #E53935);
-	background-repeat: no-repeat;
-	color: #000;
-	overflow-x: hidden;
-}
 
 a {
 	text-decoration: none !important;
@@ -155,7 +149,7 @@ td {
                     <div class="row justify-content-left d-flex">
                         <div class="col-md-4 d-flex flex-column">
                             <div class="rating-box">
-                                <h1 class="pt-4">4.0</h1>
+                                <h1 class="pt-4">4</h1>
                                 <p class="">out of 5</p>
                             </div>
                             <div>
@@ -220,28 +214,32 @@ td {
                     </div>
                 </div>
                 <div class="card">
+                    @foreach($singleProduct->review as $review)  
                     <div class="row d-flex">
                         <div class="">
-                            <img class="profile-pic" src="https://i.imgur.com/V3ICjlm.jpg">
+                            <img class="profile-pic" src="https://i.imgur.com/V3ICjlm.jpg"> 
                         </div>
+                         
                         <div class="d-flex flex-column">
-                            <h3 class="mt-2 mb-0">Vikram jit Singh</h3>
+                            <h3 class="mt-2 mb-0">{{$review->user->name}}</h3>  
                             <div>
-                                <p class="text-left"><span class="text-muted">4.0</span>
+                                <p class="text-left"><span class="text-muted">{{$review->ratings}}</span>
                                 <span class="fa fa-star star-active ml-3"></span>
                                 <span class="fa fa-star star-active"></span>
                                 <span class="fa fa-star star-active"></span>
                                 <span class="fa fa-star star-active"></span>
-                                <span class="fa fa-star star-inactive"></span></p>
+                                <span class="fa fa-star star-inactive"></span></p> 
                             </div>
                         </div>
+
                         <div class="ml-auto">
-                            <p class="text-muted pt-5 pt-sm-3">10 Sept</p>
+                            
+                            <p class="text-muted pt-5 pt-sm-3">{{$review->created_at}}</p>
                         </div>
                     </div>
                     <div class="row text-left">
-                        <h4 class="blue-text mt-3">"An awesome activity to experience"</h4>
-                        <p class="content">If you really enjoy spending your vacation 'on water' or would like to try something new and exciting for the first time.</p>
+                        <h4 class="blue-text mt-3">{{$review->review}}</h4>
+                        {{-- <p class="content">{{$review->review}}</p> --}}
                     </div>
                     <div class="row text-left">
                         <img class="pic" src="https://i.imgur.com/kjcZcfv.jpg">
@@ -256,6 +254,7 @@ td {
                             <img src="https://i.imgur.com/bFBO3J7.png"><span class="text-muted pl-2">4</span>
                         </div>
                     </div>
+                    @endforeach 
                 </div>
             </div>
         </div>

@@ -26,6 +26,9 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{url('css/frontend/css/style.css')}}" rel="stylesheet">
+    
+
+    @stack('styles')
 </head>
 
 <body>
@@ -47,7 +50,7 @@
         </section>
         
 
-   @include('frontend.partial.footer')
+        @include('frontend.partial.footer')
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>

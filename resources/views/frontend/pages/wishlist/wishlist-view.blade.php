@@ -199,7 +199,7 @@
 	                                </td>
 					        		<td width="15%" class="price">{{$item->product->price}}.BDT</td>
 					        		<td width="15%"><span class="in-stock-box">{{$item->product->stock}}</span></td>
-					        		<td width="15%"><button class="round-black-btn small-btn">Add to Cart</button></td>
+					        		<td width="15%"><a href="{{route('add.cart', $item->product->id)}}" class="round-black-btn small-btn">Add to Cart</a></td>
                                  <td width="10%" class="text-center"><a href="{{route('wish.remove', $item->id)}}" class="trash-icon"><i class="far fa-trash-alt"></i></a></td>
                                 
 					        	</tr>

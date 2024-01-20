@@ -49,13 +49,13 @@ class CustomerController extends Controller
     public function loginStore(Request $request){
         $credentials = $request->except('_token');
         if(auth()->attempt($credentials)){
-            notify()->success('Customer login successfull');
+            notify()->success('Login successfull');
             return redirect()->route('frontend.home');
 
 
         }
         notify()->error('Invalid credentials');
-        return redirect()->route('registration');
+        return redirect()->route('registration'); 
         
 
     }
@@ -67,7 +67,7 @@ class CustomerController extends Controller
 
     public function profileView(){
         $orders = Order::where('user_id', auth()->user()->id)->get();
-        return view('frontend.pages.profile', compact('orders'));
+        return view('frontend.pages.profile', compact('orders')); 
     }
 
     

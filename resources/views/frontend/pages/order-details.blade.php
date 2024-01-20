@@ -98,6 +98,8 @@
                                 <th class="text-center"scope="col">Product Name</th>
                                 <th class="text-center"scope="col">Quantity</th>
                                 <th class="text-end"scope="col">Price</th>
+								<th scope="col"></th> 
+
                               </tr>
                             </thead>
                             <tbody>
@@ -114,6 +116,10 @@
     								<td class="text-center">{{$item->product->name}}</td>
     								<td class="text-center">{{$item->quantity}}</td> 
     								<td class="text-end">{{$item->subtotal}}</td>
+									<td>
+           
+										<a class="" href="{{route('add.review', [$order->id, $item->product_id])}}">Leave a Review</a> 
+										</td>
     							</tr>
                                 @endforeach
                                

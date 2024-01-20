@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ReviewController extends Controller
 {
     public function list(){
-    $reviews = ReviewRatings::all();
+    $reviews = ReviewRatings::with(['product', 'user'])->get();
         return view('admin.pages.review.list',compact('reviews'));
     }
 }

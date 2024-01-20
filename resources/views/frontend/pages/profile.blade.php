@@ -216,6 +216,7 @@
         <th scope="col">Date</th>
         <th scope="col">Status</th>
         <th scope="col">Action</th> 
+
       </tr>
     </thead>
    
@@ -227,8 +228,8 @@
         <td>{{ $order->status }}</td>
         <td>
       <a class="btn btn-danger" href="{{route('Order_details',$order->id)}}">View</a> 
-         
-      </td>
+        </td>
+        
       </tr>
       
       @endforeach
